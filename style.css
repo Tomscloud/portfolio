@@ -8,8 +8,11 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    color: #2c3e50;
-    background-color: #f4f7f5;
+    color: #0b3c37; /* Sehr dunkles Petrol für Text */
+    background-color: #f4f7f6;
+    /* Punkt-Hintergrund wie im Bild */
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
 }
 
 .container {
@@ -28,11 +31,10 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(244, 247, 246, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(203, 213, 225, 0.4);
 }
 
 .nav-container {
@@ -46,13 +48,12 @@ body {
 
 .nav-brand {
     font-weight: 800;
-    color: #1e3d2f;
+    color: #0b3c37;
     font-size: 1.3rem;
-    letter-spacing: -0.5px;
 }
 
 .nav-links a {
-    color: #4a5568;
+    color: #334155;
     text-decoration: none;
     margin-left: 1.8rem;
     font-size: 0.95rem;
@@ -61,30 +62,24 @@ body {
 }
 
 .nav-links a:hover {
-    color: #2e7d5c;
+    color: #93c5fd;
 }
 
 .nav-links a.nav-cta {
-    background: linear-gradient(135deg, #2d4a3e 0%, #1e3d2f 100%);
+    background: #0b3c37;
     color: white;
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(30, 61, 47, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.nav-links a.nav-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(30, 61, 47, 0.3);
 }
 
 /* --- Hero Section & Animation --- */
 .hero-section {
-    background: linear-gradient(135deg, #1e3d2f 0%, #2d4a3e 100%);
+    background-color: #0b3c37; /* Das tiefe Dunkelgrün aus dem Bild */
     color: #ffffff;
     padding: 6rem 0;
     position: relative;
     overflow: hidden;
+    border-bottom: 8px solid #a3e635; /* Hellgrüner Akzentstreifen analog zum Bild */
 }
 
 .hero-grid {
@@ -99,25 +94,21 @@ body {
     color: #ffffff;
     margin-bottom: 0.8rem;
     font-weight: 800;
-    letter-spacing: -1px;
 }
 
 .hero-subtitle {
     font-size: 1.4rem;
-    color: #e2f0d9;
+    color: #cbd5e1;
     margin-bottom: 1.5rem;
-    font-weight: 300;
 }
 
 .hero-meta {
     font-size: 0.95rem;
-    color: #52c48a;
-    background: rgba(82, 196, 138, 0.1);
-    border: 1px solid rgba(82, 196, 138, 0.2);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
     display: inline-block;
     padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
+    border-radius: 4px;
 }
 
 /* Foto-Box und Slide-In Animation */
@@ -139,35 +130,19 @@ body {
     display: block;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
     
-    /* Startzustand außerhalb des Bildschirms rechts */
     transform: translateX(120px);
     opacity: 0;
-    
-    /* Animation: Zügiger Start, sehr sanftes Abbremsen */
     animation: slideInFromRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes slideInFromRight {
-    0% {
-        transform: translateX(120px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    0% { transform: translateX(120px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
 
-/* --- Zickzack-Bereiche (Alternating Sections) --- */
+/* --- Alternating Sections --- */
 .alternating-section {
-    padding: 6rem 0;
-    background-color: #ffffff;
-}
-
-.alternating-section.reverse {
-    background-color: #f3f7f4;
-    border-top: 1px solid #e4ede8;
-    border-bottom: 1px solid #e4ede8;
+    padding: 5rem 0;
 }
 
 .alternate-grid {
@@ -187,98 +162,109 @@ body {
 
 .grid-text h2 {
     font-size: 2.2rem;
-    color: #1e3d2f;
+    color: #0b3c37;
     margin-bottom: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-.grid-text p {
-    color: #4a5568;
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
 }
 
 .visual-placeholder {
     height: 240px;
-    border-radius: 12px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4a5568;
+    color: #ffffff;
     font-weight: 700;
-    font-size: 1.2rem;
 }
 
 .visual-placeholder.datacenter { 
-    border-left: 6px solid #2e7d5c; 
-    background: linear-gradient(135deg, #edf3f0 0%, #e1ebe6 100%);
+    background-color: #0b3c37;
+    border-left: 6px solid #a3e635; 
 }
 .visual-placeholder.craft { 
-    border-left: 6px solid #e67e22;
-    background: linear-gradient(135deg, #edf3f0 0%, #e1ebe6 100%);
+    background-color: #0b3c37;
+    border-left: 6px solid #a3e635;
 }
 
-/* --- Akkordeon-Bereich --- */
+/* --- Akkordeon-Bereich (Exakt wie im Bild) --- */
 .accordion-section {
-    padding: 6rem 0;
-    background-color: #ffffff;
+    padding: 5rem 0;
 }
 
 .text-center { 
     text-align: center; 
     margin-bottom: 3rem; 
-    font-size: 2.2rem;
-    color: #1e3d2f;
+    font-size: 2.4rem;
+    color: #0b3c37;
 }
 
 .accordion-item {
     background: #ffffff;
-    margin-bottom: 1.2rem;
-    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
     overflow: hidden;
-    border: 1px solid #e4ede8;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 }
 
 .accordion-header {
-    padding: 1.2rem 1.5rem;
+    padding: 0;
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 1.2rem;
     user-select: none;
     background: #ffffff;
 }
 
-.accordion-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #1e3d2f;
-    flex: 1;
+/* Linkes Icon-Quadrat */
+.accordion-header .icon {
+    font-size: 1.3rem;
+    background: #0b3c37;
+    color: white;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.accordion-header .icon {
-    font-size: 1.4rem;
-    background: #f3f7f4;
-    padding: 0.5rem;
-    border-radius: 6px;
+.accordion-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #0b3c37;
+    flex: 1;
+    padding-left: 1.5rem;
+}
+
+/* Rechter Pfeil-Button aus dem Bild */
+.accordion-header::after {
+    content: "▼";
+    font-size: 0.8rem;
+    background: #a3bfb5; /* Helles Salbeigrün */
+    color: white;
+    padding: 1.5rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.accordion-item[open] .accordion-header::after {
+    transform: rotate(180deg);
 }
 
 .accordion-content {
     padding: 2rem;
-    background: #fdfdfd;
-    border-top: 1px solid #e4ede8;
-    color: #4a5568;
+    background: #ffffff;
+    border-top: 1px solid #edf2f7;
+    color: #334155;
 }
 
-/* --- Footer & Formular --- */
+/* --- Footer --- */
 .main-footer {
-    background: linear-gradient(135deg, #1e3d2f 0%, #2d4a3e 100%);
+    background-color: #0b3c37;
     color: #ffffff;
     padding: 5rem 0;
-    margin-top: 2rem;
+    border-top: 8px solid #a3e635;
 }
 
 .footer-grid {
@@ -291,113 +277,53 @@ body {
     color: #ffffff;
     margin-bottom: 1.8rem;
     font-size: 1.4rem;
-    font-weight: 700;
-    border-bottom: 2px solid rgba(82, 196, 138, 0.3);
+    border-bottom: 2px solid rgba(255,255,255,0.1);
     padding-bottom: 0.6rem;
 }
 
-.footer-info p {
-    color: #cbdad2;
-}
+.footer-info p { color: #cbd5e1; }
+.footer-name { font-size: 1.3rem; font-weight: 700; color: #ffffff !important; }
 
-.footer-name {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #ffffff !important;
-}
-
-.vcard-box {
-    margin-top: 2.5rem;
-}
+.vcard-box { margin-top: 2.5rem; }
 
 .btn-secondary {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
     padding: 0.8rem 1.5rem;
     text-decoration: none;
     border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.qr-container {
-    margin-top: 1.5rem;
-}
-
-.qr-placeholder {
-    width: 110px;
-    height: 110px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 2px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Kontaktformular Styles */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.form-group label {
-    font-size: 0.9rem;
-    color: #a0b0a8;
-}
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.9rem; color: #cbd5e1; }
 
 .form-group input, .form-group textarea {
     padding: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     color: white;
 }
 
 .btn-submit {
-    background: #2e7d5c;
-    color: white;
+    background: #a3bfb5;
+    color: #0b3c37;
     padding: 0.9rem 2rem;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(46, 125, 92, 0.3);
-}
-
-.btn-submit:hover {
-    background-color: #235f45;
 }
 
 /* --- Responsive Anpassungen --- */
 @media (max-width: 768px) {
-    .hero-grid, .alternate-grid, .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .alternating-section.reverse .alternate-grid {
-        direction: ltr;
-    }
-    
-    .hero-section {
-        text-align: center;
-    }
-    
-    .nav-links {
-        display: none;
-    }
-    
+    .hero-grid, .alternate-grid, .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .alternating-section.reverse .alternate-grid { direction: ltr; }
+    .hero-section { text-align: center; }
+    .nav-links { display: none; }
     .profile-img-animated {
         width: 200px;
         transform: translateY(40px);
@@ -406,12 +332,6 @@ body {
 }
 
 @keyframes slideInFromBottom {
-    0% {
-        transform: translateY(40px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }

@@ -9,7 +9,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: #2c3e50;
-    background-color: #f4f7f5;
+    background-color: #f4f7f6;
 }
 
 .container {
@@ -46,7 +46,7 @@ body {
 
 .nav-brand {
     font-weight: 800;
-    color: #1e3d2f;
+    color: #1a252f;
     font-size: 1.3rem;
     letter-spacing: -0.5px;
 }
@@ -61,26 +61,26 @@ body {
 }
 
 .nav-links a:hover {
-    color: #2e7d5c;
+    color: #3498db;
 }
 
 .nav-links a.nav-cta {
-    background: linear-gradient(135deg, #2d4a3e 0%, #1e3d2f 100%);
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
     color: white;
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(30, 61, 47, 0.2);
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-links a.nav-cta:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(30, 61, 47, 0.3);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
 }
 
 /* --- Hero Section & Animation --- */
 .hero-section {
-    background: linear-gradient(135deg, #1e3d2f 0%, #2d4a3e 100%);
+    background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
     color: #ffffff;
     padding: 6rem 0;
     position: relative;
@@ -104,16 +104,16 @@ body {
 
 .hero-subtitle {
     font-size: 1.4rem;
-    color: #e2f0d9;
+    color: #ecf0f1;
     margin-bottom: 1.5rem;
     font-weight: 300;
 }
 
 .hero-meta {
     font-size: 0.95rem;
-    color: #52c48a;
-    background: rgba(82, 196, 138, 0.1);
-    border: 1px solid rgba(82, 196, 138, 0.2);
+    color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.2);
     display: inline-block;
     padding: 0.4rem 1rem;
     border-radius: 20px;
@@ -165,9 +165,9 @@ body {
 }
 
 .alternating-section.reverse {
-    background-color: #f3f7f4;
-    border-top: 1px solid #e4ede8;
-    border-bottom: 1px solid #e4ede8;
+    background-color: #f8fafc;
+    border-top: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
 }
 
 .alternate-grid {
@@ -187,7 +187,7 @@ body {
 
 .grid-text h2 {
     font-size: 2.2rem;
-    color: #1e3d2f;
+    color: #1a252f;
     margin-bottom: 1.2rem;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -201,6 +201,7 @@ body {
 
 .visual-placeholder {
     height: 240px;
+    background: #edf2f7;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -208,15 +209,16 @@ body {
     color: #4a5568;
     font-weight: 700;
     font-size: 1.2rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .visual-placeholder.datacenter { 
-    border-left: 6px solid #2e7d5c; 
-    background: linear-gradient(135deg, #edf3f0 0%, #e1ebe6 100%);
+    border-left: 6px solid #3498db; 
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
 }
 .visual-placeholder.craft { 
     border-left: 6px solid #e67e22;
-    background: linear-gradient(135deg, #edf3f0 0%, #e1ebe6 100%);
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
 }
 
 /* --- Akkordeon-Bereich --- */
@@ -229,7 +231,7 @@ body {
     text-align: center; 
     margin-bottom: 3rem; 
     font-size: 2.2rem;
-    color: #1e3d2f;
+    color: #1a252f;
 }
 
 .accordion-item {
@@ -237,8 +239,13 @@ body {
     margin-bottom: 1.2rem;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #e4ede8;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
 }
 
 .accordion-header {
@@ -255,13 +262,13 @@ body {
 .accordion-header h3 {
     margin: 0;
     font-size: 1.2rem;
-    color: #1e3d2f;
+    color: #2c3e50;
     flex: 1;
 }
 
 .accordion-header .icon {
     font-size: 1.4rem;
-    background: #f3f7f4;
+    background: #f7fafc;
     padding: 0.5rem;
     border-radius: 6px;
 }
@@ -269,13 +276,21 @@ body {
 .accordion-content {
     padding: 2rem;
     background: #fdfdfd;
-    border-top: 1px solid #e4ede8;
+    border-top: 1px solid #edf2f7;
     color: #4a5568;
+}
+
+.accordion-content p {
+    margin-bottom: 1rem;
+}
+
+.accordion-content strong {
+    color: #2c3e50;
 }
 
 /* --- Footer & Formular --- */
 .main-footer {
-    background: linear-gradient(135deg, #1e3d2f 0%, #2d4a3e 100%);
+    background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
     color: #ffffff;
     padding: 5rem 0;
     margin-top: 2rem;
@@ -292,18 +307,20 @@ body {
     margin-bottom: 1.8rem;
     font-size: 1.4rem;
     font-weight: 700;
-    border-bottom: 2px solid rgba(82, 196, 138, 0.3);
+    border-bottom: 2px solid rgba(52, 152, 219, 0.3);
     padding-bottom: 0.6rem;
 }
 
 .footer-info p {
-    color: #cbdad2;
+    color: #cbd5e0;
+    margin-bottom: 0.6rem;
 }
 
 .footer-name {
     font-size: 1.3rem;
     font-weight: 700;
     color: #ffffff !important;
+    margin-bottom: 0.8rem;
 }
 
 .vcard-box {
@@ -320,6 +337,12 @@ body {
     font-size: 0.95rem;
     font-weight: 500;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
 }
 
 .qr-container {
@@ -335,6 +358,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #a0aec0;
 }
 
 /* Kontaktformular Styles */
@@ -352,7 +378,8 @@ body {
 
 .form-group label {
     font-size: 0.9rem;
-    color: #a0b0a8;
+    color: #a0aec0;
+    font-weight: 500;
 }
 
 .form-group input, .form-group textarea {
@@ -361,10 +388,19 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
     color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-submit {
-    background: #2e7d5c;
+    background: #3498db;
     color: white;
     padding: 0.9rem 2rem;
     border: none;
@@ -372,11 +408,15 @@ body {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(46, 125, 92, 0.3);
+    align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-submit:hover {
-    background-color: #235f45;
+    background-color: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
 }
 
 /* --- Responsive Anpassungen --- */
@@ -392,6 +432,12 @@ body {
     
     .hero-section {
         text-align: center;
+        padding: 4rem 0;
+    }
+    
+    .hero-meta {
+        display: inline-block;
+        margin-top: 0.5rem;
     }
     
     .nav-links {
@@ -402,6 +448,10 @@ body {
         width: 200px;
         transform: translateY(40px);
         animation: slideInFromBottom 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    
+    .btn-submit {
+        width: 100%;
     }
 }
 

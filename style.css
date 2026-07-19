@@ -1,0 +1,458 @@
+/* Base Resets & Dark Theme Palette */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Figtree", "Segoe UI", "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 40.8px;
+    color: #D3E6E4;
+    background-color: #08292A;
+}
+
+h1, h2, h3, h4 {
+    color: #FFFFFF;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 47.52px;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 23px;
+    margin-bottom: 32px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #F68826;
+}
+
+.text-center h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+/* Layout Containers */
+.container {
+    max-width: 1296px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.max-800 {
+    max-width: 800px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.alternating-section {
+    background-color: #0A3334;
+}
+
+.alternating-section.reverse {
+    background-color: #08292A;
+}
+
+.accordion-section {
+    background-color: #0A3334;
+}
+
+/* Glassmorphism Navigation */
+.main-nav {
+    background-color: rgba(5, 31, 32, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(31, 95, 96, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1296px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: #D3E6E4;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #F68826;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #051F20;
+    padding: 100px 0;
+    border-bottom: 1px solid #1F5F60;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-subtitle {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #03A6A6;
+    margin-bottom: 20px;
+}
+
+.hero-meta {
+    font-size: 14px;
+    color: #D3E6E4;
+}
+
+.photo-box {
+    width: 220px;
+    height: 280px;
+    background-color: #0A3334;
+    border: 2px solid #1F5F60;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #03A6A6;
+    margin-left: auto;
+}
+
+/* Zickzack Grid (Alternating Layout) */
+.alternate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.reverse .alternate-grid {
+    direction: rtl;
+}
+
+.reverse .grid-text {
+    direction: ltr;
+}
+
+.visual-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #051F20;
+    border: 1px solid #1F5F60;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #03A6A6;
+}
+
+/* Akkordeon (Vorlage nach Bild) */
+.accordion-item {
+    background-color: #FFFFFF;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+.accordion-header::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-header .icon {
+    background-color: #0D5152;
+    color: #FFFFFF;
+    font-size: 20px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    margin-right: 20px;
+}
+
+.accordion-header h3 {
+    color: #0D5152;
+    margin-bottom: 0;
+    font-size: 18px;
+    flex-grow: 1;
+}
+
+.accordion-header .arrow {
+    width: 32px;
+    height: 32px;
+    background-color: #A3D1C9;
+    border-radius: 4px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header .arrow::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 11px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #0D5152;
+}
+
+details[open] .accordion-header .arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: 24px 24px 24px 84px;
+    border-top: 1px solid #F2FAFA;
+    color: #525254;
+    background-color: #FFFFFF;
+    line-height: 32px;
+}
+
+.accordion-content strong {
+    color: #0D5152;
+}
+
+/* Primary Button with Glow Shadow */
+.btn-primary {
+    display: inline-block;
+    background-color: #F68826;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 41px;
+    border-radius: 25px;
+    border: 2px solid #F68826;
+    box-shadow: rgba(254, 195, 0, 0.455) 0px 0px 0px 3.54px;
+    margin-top: 24px;
+}
+
+.btn-primary:hover {
+    background-color: #F5821B;
+    transform: translateY(-2px);
+}
+
+/* Footer & Form Styles */
+.main-footer {
+    background-color: #031414;
+    color: #D3E6E4;
+    padding: 80px 0;
+    border-top: 1px solid #1F5F60;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.footer-info h4, .footer-form-box h4 {
+    color: #FFFFFF;
+    font-size: 21px;
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-info h4::after, .footer-form-box h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #F68826;
+}
+
+.footer-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.vcard-box {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: #F68826;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #F68826;
+    text-align: center;
+    max-width: 280px;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(246, 136, 38, 0.1);
+    color: #FFFFFF;
+}
+
+.qr-container {
+    margin-top: 8px;
+}
+
+.qr-placeholder {
+    width: 120px;
+    height: 120px;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #031414;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+}
+
+.contact-form {
+    background-color: #051F20;
+    padding: 32px;
+    border-radius: 8px;
+    border: 1px solid #1F5F60;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    background-color: #031414;
+    border: 1px solid #1F5F60;
+    border-radius: 5px;
+    padding: 12px 16px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #03A6A6;
+    box-shadow: rgba(3, 166, 166, 0.2) 0px 0px 0px 3px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #F68826;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #F5821B;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+    .alternate-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .reverse .alternate-grid {
+        direction: ltr;
+    }
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+    .photo-box {
+        margin: 0 auto;
+    }
+    .accordion-content {
+        padding: 20px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}

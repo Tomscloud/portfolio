@@ -11,7 +11,7 @@
     <!-- Glassmorphism Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <span class="nav-brand">T. Stillebacher</span>
+            <span class="nav-brand">Thomas Stillebacher</span>
             <div class="nav-links">
                 <a href="#profil">Profil</a>
                 <a href="#details">Details</a>
@@ -22,6 +22,35 @@
     </nav>
 
     <header class="hero-section">
+        <!-- Das polygonale Hintergrund-SVG kommt direkt hierhin -->
+<svg class="hero-poly-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+    <!-- Reihe 1 (Oben) -->
+    <polygon points="0,0 250,0 120,180" fill="#072724" opacity="0.45"/>
+    <polygon points="250,0 600,0 420,220" fill="#0d4640" opacity="0.25"/>
+    <polygon points="600,0 950,0 780,150" fill="#051e1c" opacity="0.5"/>
+    <polygon points="950,0 1440,0 1150,250" fill="#0e524b" opacity="0.2"/>
+    
+    <!-- Reihe 2 (Mitte oben) -->
+    <polygon points="0,0 120,180 0,350" fill="#051e1c" opacity="0.3"/>
+    <polygon points="120,180 420,220 280,400" fill="#0e524b" opacity="0.15"/>
+    <polygon points="420,220 780,150 650,450" fill="#072724" opacity="0.4"/>
+    <polygon points="780,150 1150,250 980,380" fill="#0d4640" opacity="0.25"/>
+    <polygon points="1150,250 1440,0 1440,300" fill="#051e1c" opacity="0.4"/>
+
+    <!-- Reihe 3 (Mitte unten) -->
+    <polygon points="0,350 280,400 0,600" fill="#0d4640" opacity="0.2"/>
+    <polygon points="280,400 650,450 480,620" fill="#051e1c" opacity="0.5"/>
+    <polygon points="650,450 980,380 820,580" fill="#0e524b" opacity="0.15"/>
+    <polygon points="980,380 1440,300 1250,600" fill="#072724" opacity="0.35"/>
+    <polygon points="1440,300 1440,550 1250,600" fill="#0d4640" opacity="0.2"/>
+
+    <!-- Reihe 4 (Unten) -->
+    <polygon points="0,600 480,620 0,800" fill="#072724" opacity="0.4"/>
+    <polygon points="480,620 820,580 350,800" fill="#0e524b" opacity="0.25"/>
+    <polygon points="820,580 1250,600 780,800" fill="#051e1c" opacity="0.6"/>
+    <polygon points="1250,600 1440,550 1440,800" fill="#0d4640" opacity="0.15"/>
+    <polygon points="1250,600 780,800 1440,800" fill="#072724" opacity="0.3"/>
+</svg>
         <div class="container hero-grid">
             <div class="hero-text">
                 <h1>Thomas Stillebacher</h1>
@@ -40,7 +69,7 @@
         <section id="profil" class="alternating-section">
             <div class="container alternate-grid">
                 <div class="grid-image">
-                    <div class="visual-placeholder datacenter"><span>IT-Infrastruktur</span></div>
+                   <img src="serverworking.png" alt="IT-Infrastruktur und Serverbetrieb" class="profile-section-img">
                 </div>
                 <div class="grid-text">
                     <h2>Über 25 Jahre System-Erfahrung</h2>
@@ -52,7 +81,7 @@
         <section class="alternating-section reverse">
             <div class="container alternate-grid">
                 <div class="grid-image">
-                    <div class="visual-placeholder craft"><span>Macher-Mentalität</span></div>
+                    <img src="elektrik.png" alt="Praktische Umsetzung und Elektrotechnik" class="profile-section-img">
                 </div>
                 <div class="grid-text">
                     <h2>Praktische Expertise, Handwerk & Umsetzung</h2>
@@ -66,7 +95,7 @@
             <div class="container max-800">
                 <h2 class="text-center">Qualifikationen & Werdegang</h2>
                 
-                <details class="accordion-item" open>
+                <details class="accordion-item">
                     <summary class="accordion-header">
                         <span class="icon">💻</span>
                         <h3>IT-Infrastruktur & Netzwerke</h3>
@@ -132,7 +161,6 @@
                 <a href="thomas_stillebacher.vcf" class="btn-secondary" download>Digitale Visitenkarte (vCard) laden</a>
                 <div class="qr-container">
                     <br><img src="qr-code.svg" alt="vCard QR-Code" style="width: 150px; height: 150px; display: block;"></br>
-                    <span>QR Code<br>vCard</span>
                 </div>
             </div>
         </div>

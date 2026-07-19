@@ -10,90 +10,132 @@ body {
     line-height: 1.6;
     color: #333333;
     background-color: #f8f9fa;
-    padding: 0;
 }
 
-/* --- Typografie & Container --- */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-}
-
-h1, h2, h3 {
-    color: #1a252f;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-h1 { font-size: 2.5rem; }
-h2 { 
-    font-size: 1.8rem; 
-    border-bottom: 2px solid #34495e;
-    padding-bottom: 0.3rem;
-    margin-top: 2rem;
-}
-
-p { margin-bottom: 1rem; }
-
-/* --- Header & Profilbild-Bereich --- */
-header {
-    background-color: #1a252f;
-    color: #ffffff;
-    padding: 3rem 0;
-    margin-bottom: 2rem;
-}
-
-.header-container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 1.5rem;
+}
+
+.max-800 {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Glassmorphism Navigation --- */
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+}
+
+.nav-brand {
+    font-weight: 700;
+    color: #1a252f;
+    font-size: 1.2rem;
+}
+
+.nav-links a {
+    color: #555;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #1a252f;
+}
+
+.nav-links a.nav-cta {
+    background-color: #34495e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.nav-links a.nav-cta:hover {
+    background-color: #2c3e50;
+}
+
+/* --- Hero Section & Profilbild-Animation --- */
+.hero-section {
+    background-color: #1a252f;
+    color: #ffffff;
+    padding: 5rem 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    align-items: center;
     gap: 2rem;
 }
 
-.header-text {
-    flex: 1;
-    min-width: 280px;
-}
-
-.header-text h1 {
+.hero-text h1 {
+    font-size: 2.8rem;
     color: #ffffff;
     margin-bottom: 0.5rem;
 }
 
-.header-text p {
-    font-size: 1.2rem;
+.hero-subtitle {
+    font-size: 1.3rem;
     color: #bdc3c7;
+    margin-bottom: 1rem;
 }
 
-/* --- Animation für das freigestellte PNG-Profilbild --- */
-/* --- Bereich für das Profilbild --- */
-.photo-box {
+.hero-meta {
+    font-size: 0.95rem;
+    color: #95a5a6;
+    background: rgba(255,255,255,0.05);
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+}
+
+/* Foto-Box und Slide-In Animation */
+.hero-image-placeholder {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+.photo-box {
+    overflow: visible; 
 }
 
 .profile-img-animated {
-    width: 200px;
+    width: 240px;
     height: auto;
     object-fit: contain;
+    display: block;
     
-    /* Startposition außerhalb des rechten Bildschirms */
-    transform: translateX(100px);
+    /* Startzustand ausserhalb des Bildschirms rechts */
+    transform: translateX(120px);
     opacity: 0;
     
-    /* Animation: Zügiger Start, sehr sanftes Abbremsen am Ende */
+    /* Animation: Zügiger Start, sehr sanftes Abbremsen */
     animation: slideInFromRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes slideInFromRight {
     0% {
-        transform: translateX(100px);
+        transform: translateX(120px);
         opacity: 0;
     }
     100% {
@@ -102,39 +144,166 @@ header {
     }
 }
 
-/* --- Portfolio-Sektionen (Infrastruktur & Erfahrung) --- */
-.section-block {
-    background: #ffffff;
+/* --- Zickzack-Bereiche (Alternating Sections) --- */
+.alternating-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+}
+
+.alternating-section.reverse {
+    background-color: #f8f9fa;
+}
+
+.alternate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.alternating-section.reverse .alternate-grid {
+    direction: rtl;
+}
+
+.alternating-section.reverse .grid-text {
+    direction: ltr;
+}
+
+.grid-text h2 {
+    font-size: 1.8rem;
+    color: #1a252f;
+    margin-bottom: 1rem;
+}
+
+.visual-placeholder {
+    height: 200px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.visual-placeholder.datacenter { border-left: 5px solid #3498db; }
+.visual-placeholder.craft { border-left: 5px solid #e67e22; }
+
+/* --- Akkordeon-Bereich --- */
+.accordion-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+}
+
+.text-center { text-align: center; margin-bottom: 2rem; }
+
+.accordion-item {
+    background: #f8f9fa;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.accordion-header {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.accordion-content {
     padding: 1.5rem;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
 }
 
-.experience-item {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #ecf0f1;
+.accordion-content p {
+    margin-bottom: 0.8rem;
 }
 
-.experience-item:last-child {
-    border-bottom: none;
+.accordion-content p:last-child {
     margin-bottom: 0;
-    padding-bottom: 0;
 }
 
-.meta-info {
+/* --- Footer & Formular --- */
+.main-footer {
+    background-color: #1a252f;
+    color: #ffffff;
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.footer-info h4, .footer-form-box h4 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.footer-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.vcard-box {
+    margin-top: 1.5rem;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 4px;
     font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-bottom: 0.5rem;
+    transition: background 0.2s;
 }
 
-/* --- Kontaktformular --- */
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.qr-container {
+    margin-top: 1rem;
+}
+
+.qr-placeholder {
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Kontaktformular Styles */
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 600px;
 }
 
 .form-group {
@@ -144,63 +313,82 @@ header {
 }
 
 .form-group label {
-    font-weight: 500;
-    color: #2c3e50;
+    font-size: 0.9rem;
+    color: #bdc3c7;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input, .form-group textarea {
     padding: 0.7rem;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
     border-radius: 4px;
+    color: white;
     font-size: 1rem;
     font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.form-group input:focus, .form-group textarea:focus {
     outline: none;
-    border-color: #34495e;
+    border-color: #3498db;
+    background: rgba(255,255,255,0.08);
 }
 
-button[type="submit"] {
-    background-color: #34495e;
+.btn-submit {
+    background-color: #3498db;
     color: white;
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     align-self: flex-start;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s;
 }
 
-button[type="submit"]:hover {
-    background-color: #2c3e50;
+.btn-submit:hover {
+    background-color: #2980b9;
 }
 
-/* --- Responsive Anpassungen für Mobilgeräte --- */
+/* --- Responsive Anpassungen --- */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
+    .hero-grid, .alternate-grid, .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .alternating-section.reverse .alternate-grid {
+        direction: ltr;
+    }
+    
+    .hero-section {
         text-align: center;
+        padding: 3rem 0;
+    }
+    
+    .hero-meta {
+        display: block;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-links {
+        display: none; /* Vereinfachung für Mobile im puren CSS */
     }
     
     .profile-img-animated {
-        width: 150px;
-        order: -1; /* Bild rückt auf dem Smartphone nach oben über den Text */
-        transform: translateY(30px); /* Schiebt auf Mobilgeräten leicht von unten rein statt von rechts */
+        width: 180px;
+        transform: translateY(40px);
         animation: slideInFromBottom 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
     
-    button[type="submit"] {
+    .btn-submit {
         width: 100%;
     }
 }
 
 @keyframes slideInFromBottom {
     0% {
-        transform: translateY(30px);
+        transform: translateY(40px);
         opacity: 0;
     }
     100% {

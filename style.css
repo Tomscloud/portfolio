@@ -71,6 +71,13 @@ header {
 }
 
 /* --- Animation für das freigestellte PNG-Profilbild --- */
+/* --- Bereich für das Profilbild --- */
+.photo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-img-animated {
     width: 200px;
     height: auto;

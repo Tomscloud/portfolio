@@ -226,27 +226,46 @@ body {
 }
 .profile-section-img {
     width: 100%;
-    max-width: 450px;
-    height: 300px;
+    max-width: 550px; /* Mehr Breite für den echten Breitbild-Effekt */
+    height: 320px;    /* Höher angesetzt, damit es bei der Breite länglich bleibt */
     object-fit: cover;
     border-radius: 12px;
     display: block;
     margin: 0 auto;
-    
-    /* Rahmen für hellen Hintergrund */
-    background: #0b3c37; /* Sehr helles Grau als Innenfläche */
-    padding: 6px; 
-    border: 1px solid #e2e8f0; /* Subtiler, dunklerer Grauton für den Rand */
-    
+    background: transparent;
+    padding: 0;
+    border: none;
     box-sizing: border-box; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover-Effekt auf hellem Untergrund */
 .profile-section-img:hover {
     transform: translateY(-5px);
-    border-color: #cbd5e1; /* Rahmen wird beim Hover etwas dunkler und deutlicher */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Weicherer Schatten für helle Flächen */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); 
+}
+
+.grid-image {
+    position: relative;
+    width: 100%;
+}
+
+/* Die dynamische Linie, die oben und unten sanft verschwindet */
+.grid-image::before {
+    content: "";
+    position: absolute;
+    left: -16px; /* Etwas mehr Abstand, da das Bild jetzt größer ist */
+    top: 15%;    
+    height: 70%; 
+    width: 6px;  
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        #a3e635 20%, 
+        #a3e635 80%, 
+        transparent 100%
+    );
+    border-radius: 3px; 
+    z-index: 2;
 }
 .alternating-section {
     padding: 5rem 0;
@@ -341,54 +360,38 @@ body {
     flex: 1;
     padding-left: 1.5rem;
 }
-/* 1. Standardzustand der grauen Pfeil-Fläche auf der rechten Seite */
-.accordion-arrow-box {
-    background-color: #a3b8b5; /* Dein aktuelles Grau-Grün */
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Standardzustand des Pfeils: Zeigt nach links */
-.accordion-arrow-box svg, 
-.accordion-arrow-box i {
-    transform: rotate(-90deg); /* Dreht den standardmäßig nach unten zeigenden Pfeil nach links */
-    transition: transform 0.3s ease, color 0.3s ease;
-    color: #ffffff; /* Pfeilfarbe */
-}
-
-/* Greift das graue Feld rechts direkt an, unabhängig vom exakten Klassennamen */
-.accordion-header > div:last-child,
-.accordion-header > span:last-child {
-    background-color: #a3b8b5;
-    transition: background-color 0.3s ease;
-}
-
-/* Hover-Effekt: Wenn der Header gehovert wird, wird das letzte Kind-Element dunkler */
-.accordion-header:hover > div:last-child,
-.accordion-header:hover > span:last-child {
-    background-color: #435250 !important; /* Ein deutlich dunkleres Graugrün */
-}
-
-/* 3. Aktiver / Geöffneter Zustand (wenn die Kachel angeklickt wurde) */
-/* Falls JavaScript oder CSS eine Klasse wie .active hinzufügt, bleibt der Pfeil unten */
-.accordion-header.active .accordion-arrow-box svg,
-.accordion-header.active .accordion-arrow-box i {
-    transform: rotate(0deg);
-}
-
-/* Rechter Pfeil-Button aus dem Bild */
-.accordion-header::after {
-    content: "▼";
-    font-size: 0.8rem;
+/* Das graue Pfeil-Feld rechts im Standardzustand */
+.accordion-header .arrow {
     background: #a3bfb5; /* Helles Salbeigrün */
     color: white;
     padding: 1.5rem 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    
+    /* Standardmäßig nach links zeigen lassen */
+    transform: rotate(-90deg); 
+}
+
+/* Hover-Effekt auf der Kachel: Feld wird dunkler, Pfeil dreht sich nach unten */
+.accordion-header:hover .arrow {
+    background-color: #5f7572; /* Deutlich dunkleres Graugrün */
+    transform: rotate(0deg); /* Dreht sich beim Hovern nach unten */
+}
+
+/* Wenn das Akkordeon geöffnet ist (HTML5 open Attribut), bleibt der Pfeil unten */
+.accordion-item[open] .accordion-header .arrow {
+    transform: rotate(0deg);
+    background-color: #5f7572;
+}
+
+/* Entfernt den standardmäßigen kleinen Browser-Pfeil im Firefox/Chrome */
+.accordion-header::-webkit-details-marker {
+    display: none;
+}
+.accordion-header {
+    list-style: none;
 }
 
 .accordion-item[open] .accordion-header::after {

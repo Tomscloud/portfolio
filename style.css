@@ -28,19 +28,34 @@ body {
 
 /* --- Glassmorphism Navigation --- */
 .main-nav {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 20px; /* Lässt das Menü elegant von oben herab schweben */
+    left: 50%;
+    transform: translateX(-50%); /* Zentriert das schwebende Menü exakt */
+    width: 100%; /* Nimmt nicht mehr die volle Breite ein */
+    max-width: 1100px; /* Passt sich perfekt an deine Container-Breite aus .nav-container an */
     z-index: 1000;
-    background: rgba(244, 247, 246, 0.8);
+    
+    /* Echter, transparenterer Glaseffekt */
+    background: rgba(244, 247, 246, 0.45); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(203, 213, 225, 0.4);
+    
+    /* Abrundung und rundherum verlaufender feiner Glas-Rahmen */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Lichtkante auf dem Glas */
+    
+    /* Räumlicher Schatten, der das Glas von der Homepage abhebt */
+    box-shadow: 0 10px 30px rgba(11, 60, 55, 0.06), 
+                0 1px 3px rgba(0, 0, 0, 0.02);
+                
+    transition: all 0.3s ease;
 }
 
 .nav-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1.2rem 1.5rem;
+    /* max-width wird jetzt von .main-nav abgefangen, hier sorgt width: 100% für sauberes Padding */
+    width: 100%;
+    padding: 0.8rem 1.5rem; /* Etwas kompakteres Padding für den schwebenden Look */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,13 +84,7 @@ body {
     background: #0b3c37;
     color: white;
     padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-}
-
-/* --- Hero Section & Animation --- */
-.hero-section {
-    position: relative;
-    overflow: hidden;
+    border-radius: 8px; /* Leicht erhöht, um zu den 16px des Hauptmenüs zu passen */
 }
 
 /* Holt das SVG komplett aus dem Textfluss */
@@ -236,12 +245,12 @@ body {
     padding: 0;
     border: none;
     box-sizing: border-box; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
 }
 
 .profile-section-img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); 
+    transform: scale(1.03) translateY(-5px) rotate(1.5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12); 
 }
 
 .grid-image {

@@ -440,8 +440,7 @@ body {
 #flipbook-viewer {
     width: 1600px;
     height: 2262px;
-    margin: 0 auto;
-    transform-origin: top center;
+    transform-origin: top left;
 }
 
 .flipbook-actions {

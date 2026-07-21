@@ -249,7 +249,7 @@
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
- const pageFlip = new St.PageFlip(document.getElementById('flipbook-viewer'), {
+const pageFlip = new St.PageFlip(document.getElementById('flipbook-viewer'), {
   width: 1600,
   height: 2262,
   size: 'stretch',
@@ -260,6 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
   showCover: false,
   usePortrait: true,
   autoSize: false,
+  useMouseEvents: false,
   maxShadowOpacity: 0.5
 });
 
@@ -279,6 +280,19 @@ document.addEventListener('DOMContentLoaded', function () {
     viewer.style.transform = 'scale(' + scale + ')';
     wrap.style.height = (2262 * scale) + 'px';
   }
+  const wrap = document.querySelector('.flipbook-scale-wrap');
+wrap.style.cursor = 'pointer';
+wrap.addEventListener('click', function (e) {
+  const rect = wrap.getBoundingClientRect();
+  const relX = (e.clientX - rect.left) / rect.width;
+  const relY = (e.clientY - rect.top) / rect.height;
+  const corner = relY < 0.5 ? 'top' : 'bottom';
+  if (relX < 0.5) {
+    pageFlip.flipPrev(corner);
+  } else {
+    pageFlip.flipNext(corner);
+  }
+});
   window.addEventListener('resize', updateFlipbookScale);
   updateFlipbookScale();
 });

@@ -190,7 +190,18 @@
                 </details>
             </div>
         </section>
-    </main>
+
+        <section class="flipbook-section" id="lebenslauf">
+  <div class="container">
+    <h2 class="text-center">Lebenslauf &amp; Zeugnisse</h2>
+    <p class="flipbook-hint">Zum Blättern auf die Ecken klicken oder wischen</p>
+    <div id="flipbook-viewer"></div>
+    <div class="flipbook-actions">
+      <a class="btn-secondary" href="assets/flipbook/bewerbungsmappe-stillebacher.pdf" download>PDF herunterladen</a>
+    </div>
+  </div>
+</section>
+</main>
 
 <!-- Erweiterter Footer mit Impressum, vCard, QR-Code & Kontaktformular -->
 <footer id="impressum" class="main-footer">
@@ -233,6 +244,31 @@
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const pageFlip = new St.PageFlip(document.getElementById('flipbook-viewer'), {
+    width: 500,
+    height: 707,
+    size: 'stretch',
+    minWidth: 300,
+    maxWidth: 800,
+    minHeight: 424,
+    maxHeight: 1131,
+    showCover: false,
+    usePortrait: true,
+    maxShadowOpacity: 0.5
+  });
 
+  pageFlip.loadFromImages([
+    'assets/flipbook/seite-1.png',
+    'assets/flipbook/seite-2.png',
+    'assets/flipbook/seite-3.png',
+    'assets/flipbook/seite-4.png',
+    'assets/flipbook/seite-5.png',
+    'assets/flipbook/seite-6.png'
+  ]);
+});
+</script>
 </body>
 </html>

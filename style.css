@@ -414,6 +414,30 @@ body {
     color: #334155;
 }
 
+.flipbook-section {
+    background-color: #0b3c37;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.flipbook-section .text-center {
+    color: #ffffff;
+}
+
+.flipbook-section p.flipbook-hint {
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+}
+
+#flipbook-viewer {
+    margin: 0 auto 2.5rem auto;
+    max-width: 800px;
+}
+
+.flipbook-actions {
+    margin-top: 1rem;
+}
+
 /* --- Footer --- */
 .main-footer {
     background-color: #0b3c37;

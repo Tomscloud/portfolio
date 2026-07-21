@@ -429,9 +429,18 @@ body {
     margin-bottom: 2rem;
 }
 
-#flipbook-viewer {
-    margin: 0 auto 2.5rem auto;
+.flipbook-scale-wrap {
+    width: 100%;
     max-width: 800px;
+    margin: 0 auto 2.5rem auto;
+    overflow: hidden;
+    position: relative;
+}
+
+#flipbook-viewer {
+    width: 1600px;
+    height: 2262px;
+    transform-origin: top left;
 }
 
 .flipbook-actions {

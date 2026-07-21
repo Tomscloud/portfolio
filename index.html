@@ -195,7 +195,9 @@
   <div class="container">
     <h2 class="text-center">Lebenslauf &amp; Zeugnisse</h2>
     <p class="flipbook-hint">Zum Blättern auf die Ecken klicken oder wischen</p>
-    <div id="flipbook-viewer"></div>
+   <div class="flipbook-scale-wrap">
+  <div id="flipbook-viewer"></div>
+</div>
     <div class="flipbook-actions">
       <a class="btn-secondary" href="assets/flipbook/bewerbungsmappe-stillebacher.pdf" target="_new" download>PDF herunterladen</a>
     </div>
@@ -248,13 +250,13 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const pageFlip = new St.PageFlip(document.getElementById('flipbook-viewer'), {
-    width: 500,
-    height: 707,
+    width: 1600,
+    height: 2262,
     size: 'stretch',
-    minWidth: 300,
-    maxWidth: 800,
-    minHeight: 424,
-    maxHeight: 1131,
+    minWidth: 800,
+    maxWidth: 1600,
+    minHeight: 1131,
+    maxHeight: 2262,
     showCover: false,
     usePortrait: true,
     maxShadowOpacity: 0.5
@@ -268,6 +270,16 @@ document.addEventListener('DOMContentLoaded', function () {
     'assets/flipbook/seite-5.jpg',
     'assets/flipbook/seite-6.jpg'
   ]);
+
+  function updateFlipbookScale() {
+    const wrap = document.querySelector('.flipbook-scale-wrap');
+    const viewer = document.getElementById('flipbook-viewer');
+    const scale = wrap.clientWidth / 1600;
+    viewer.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = (2262 * scale) + 'px';
+  }
+  window.addEventListener('resize', updateFlipbookScale);
+  updateFlipbookScale();
 });
 </script>
 </body>

@@ -506,7 +506,20 @@ body {
     border-bottom: 2px solid rgba(255,255,255,0.1);
     padding-bottom: 0.6rem;
 }
+.flipbook-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
+button.btn-secondary {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
 .footer-info p { color: #cbd5e1; }
 .footer-name { font-size: 1.3rem; font-weight: 700; color: #ffffff !important; }
 

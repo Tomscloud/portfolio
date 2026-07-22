@@ -536,8 +536,23 @@ button.btn-secondary {
     }
     
     .hero-section { 
+        padding-top: 5rem;
         text-align: center; 
     }
+    .hero-text {
+        padding-bottom: 1.5rem; /* Platz zum Bild deutlich verringern */
+    }
+
+    .hero-grid {
+        gap: 1.5rem; /* Abstand zwischen Text-Block und Bild-Block halbieren */
+    }
+
+    .profile-img-animated {
+        width: 220px; /* Leicht vergrößert, damit das Gesicht gut sichtbar ist */
+        transform: translateY(100%);
+        animation: slideInFromBottom 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+}
 
     /* SVG Polygone auf Handy kompakt halten */
     .hero-poly-bg {

@@ -29,11 +29,11 @@ body {
 /* --- Glassmorphism Navigation --- */
 .main-nav {
     position: fixed;
-    top: 20px; /* Lässt das Menü elegant von oben herab schweben */
+    top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Zentriert das schwebende Menü exakt */
-    width: 100%; /* Nimmt nicht mehr die volle Breite ein */
-    max-width: 1100px; /* Passt sich perfekt an deine Container-Breite aus .nav-container an */
+    transform: translateX(-50%);
+    width: 100%; 
+    max-width: 1100px;
     z-index: 1000;
     
     /* Echter, transparenterer Glaseffekt */
@@ -43,7 +43,7 @@ body {
     
     /* Abrundung und rundherum verlaufender feiner Glas-Rahmen */
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Lichtkante auf dem Glas */
+    border: 1px solid rgba(255, 255, 255, 0.5);
     
     /* Räumlicher Schatten, der das Glas von der Homepage abhebt */
     box-shadow: 0 10px 30px rgba(11, 60, 55, 0.06), 
@@ -55,7 +55,7 @@ body {
 .nav-container {
     /* max-width wird jetzt von .main-nav abgefangen, hier sorgt width: 100% für sauberes Padding */
     width: 100%;
-    padding: 0.8rem 1.5rem; /* Etwas kompakteres Padding für den schwebenden Look */
+    padding: 0.8rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,7 +84,7 @@ body {
     background: #0b3c37;
     color: white;
     padding: 0.6rem 1.2rem;
-    border-radius: 8px; /* Leicht erhöht, um zu den 16px des Hauptmenüs zu passen */
+    border-radius: 8px;
 }
 
 /* Holt das SVG komplett aus dem Textfluss */
@@ -96,7 +96,7 @@ body {
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    display: block; /* Verhindert inline-Abstände unter dem SVG */
+    display: block;
 }
 
 /* Zwingt den Content-Container, über dem SVG zu liegen */
@@ -107,7 +107,6 @@ body {
 .hero-section {
     background-color: #0b3c37; 
     color: #ffffff;
-    /* KORREKTUR: Oben 6rem, rechts 0, UNTEN 0, links 0 */
     padding: 6rem 0 0 0;      
     position: relative;
     overflow: hidden;
@@ -117,14 +116,11 @@ body {
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 300px;
-    /* KORREKTUR: Richtet die Spalten am unteren Rand aus */
     align-items: end;         
     gap: 3rem;
 }
 
 .hero-text {
-    /* Fügt den fehlenden unteren Abstand für den Text wieder hinzu, */
-    /* damit der Text nicht am gelben Rand klebt, während das Foto unten aufsitzt */
     padding-bottom: 6rem;     
 }
 
@@ -153,11 +149,11 @@ body {
 /* Foto-Box und Slide-In Animation */
 .hero-image-placeholder {
     display: flex;
-    align-items: flex-end; /* Zwingt den Inhalt ganz nach unten */
+    align-items: flex-end;
     justify-content: center;
     height: 100%;
-    margin-bottom: 0;      /* Entfernt potenzielle Abstände */
-    padding-bottom: 0;     /* Verhindert inneren Abstand zur Linie */
+    margin-bottom: 0; 
+    padding-bottom: 0;
 }
 
 .photo-box {
@@ -168,58 +164,41 @@ body {
 }
 
 .profile-img-animated {
-    width: 100%;           /* Nutzt die volle Breite der Spalte */
-    max-width: 400px;      /* Hier steuerst du direkt, wie groß das Bild sein darf */
-    height: auto;          /* Behält die korrekte Proportion ohne Stauchung */
-    display: block;        /* Eliminiert den typischen CSS-Unterzeilen-Spalt von Bildern */
-    margin-bottom: 0;      /* Setzt den unteren Außenabstand hart auf Null */
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin-bottom: 0;
     
     filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.15));
     
     transform: translateX(120px);
     opacity: 0;
-    animation: slideInFromRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: slideInFromRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes slideInFromRight {
-    0% { transform: translateX(120px); opacity: 0; }
+    0% { transform: translateX(100vw); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
 /* --- Alternating Sections --- */
-/* Feature Kacheln mit Bildern */
-.feature-card {
-    background: rgba(255, 255, 255, 0.05); /* Passend zu deinem dunklen Stil */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    overflow: hidden; /* Wichtig, damit die Ecken der Bilder oben abgerundet werden */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
 .card-image-wrapper {
     width: 100%;
-    height: 180px; /* Feste Höhe für die Bild-Sektion in den Kacheln */
+    height: 180px;
     overflow: hidden;
 }
 
 .card-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Schneidet das Bild perfekt zu, ohne es zu stauchen */
+    object-fit: cover;
     object-position: center;
 }
 
 .card-content {
     padding: 1.5rem;
-    flex-grow: 1; /* Sorgt dafür, dass der Textbereich den restlichen Platz füllt */
+    flex-grow: 1;
 }
 
 .card-content h3 {
@@ -235,8 +214,8 @@ body {
 }
 .profile-section-img {
     width: 100%;
-    max-width: 550px; /* Mehr Breite für den echten Breitbild-Effekt */
-    height: 320px;    /* Höher angesetzt, damit es bei der Breite länglich bleibt */
+    max-width: 550px;
+    height: 320px;
     object-fit: cover;
     border-radius: 12px;
     display: block;
@@ -262,7 +241,7 @@ body {
 .grid-image::before {
     content: "";
     position: absolute;
-    left: -16px; /* Etwas mehr Abstand, da das Bild jetzt größer ist */
+    left: -16px;
     top: 15%;    
     height: 70%; 
     width: 6px;  
@@ -371,7 +350,7 @@ body {
 }
 /* Das graue Pfeil-Feld rechts im Standardzustand */
 .accordion-header .arrow {
-    background: #a3bfb5; /* Helles Salbeigrün */
+    background: #a3bfb5;
     color: white;
     padding: 1.5rem 1.2rem;
     display: flex;
@@ -385,8 +364,8 @@ body {
 
 /* Hover-Effekt auf der Kachel: Feld wird dunkler, Pfeil dreht sich nach unten */
 .accordion-header:hover .arrow {
-    background-color: #5f7572; /* Deutlich dunkleres Graugrün */
-    transform: rotate(0deg); /* Dreht sich beim Hovern nach unten */
+    background-color: #5f7572;
+    transform: rotate(0deg);
 }
 
 /* Wenn das Akkordeon geöffnet ist (HTML5 open Attribut), bleibt der Pfeil unten */

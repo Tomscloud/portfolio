@@ -38,18 +38,23 @@
 <body>
 
     <!-- Glassmorphism Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <span class="nav-brand">Thomas Stillebacher</span>
-            <div class="nav-links">
-                <a href="#profil">Profil</a>
-                <a href="#details">Details</a>
-                <a href="#impressum">Kontakt</a>
-                <a href="https://1drv.ms/f/c/5277166773def518/IgAKEDSyV4KVQ5mLOdQ_6CK8Afhcjr294D3zv1TYQAk4vag"
-                    class="nav-cta" target="_blank">Unterlagen</a>
-            </div>
-        </div>
-    </nav>
+<nav class="glass-nav" aria-label="Hauptnavigation">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">Thomas Stillebacher</a>
+        
+        <!-- Hamburger Button für Mobilgeräte -->
+        <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#kompetenzen">Kompetenzen</a></li>
+            <li><a href="#lebenslauf">Lebenslauf</a></li>
+            <li><a href="#impressum">Kontakt</a></li>
+        </ul>
+    </div>
+</nav>
 
     <header class="hero-section">
         <!-- Das polygonale Hintergrund-SVG kommt direkt hierhin -->
@@ -157,7 +162,7 @@
             </div>
         </section>
         <!-- Akkordeon-Bereich -->
-        <section id="details" class="accordion-section">
+        <section id="kompetenzen" class="accordion-section">
             <div class="container max-800">
                 <h2 class="text-center">Qualifikationen & Werdegang</h2>
 
@@ -364,6 +369,26 @@
             };
             frame.src = 'assets/flipbook/bewerbungsmappe-stillebacher.pdf';
         });
+
+        const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        navToggle.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Menü schließen, wenn ein Link geklickt wird
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
     </script>
 </body>
 

@@ -8,9 +8,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    color: #0b3c37; /* Sehr dunkles Petrol für Text */
+    color: #0b3c37;
     background-color: #f4f7f6;
-    /* Punkt-Hintergrund wie im Bild */
     background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
     background-size: 24px 24px;
 }
@@ -27,7 +26,7 @@ body {
 }
 
 /* --- Glassmorphism Navigation --- */
-.main-nav {
+.main-nav, .glass-nav {
     position: fixed;
     top: 20px;
     left: 50%;
@@ -36,16 +35,13 @@ body {
     max-width: 1100px;
     z-index: 1000;
     
-    /* Echter, transparenterer Glaseffekt */
-    background: rgba(244, 247, 246, 0.45); 
+    background: rgba(244, 247, 246, 0.55); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     
-    /* Abrundung und rundherum verlaufender feiner Glas-Rahmen */
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     
-    /* Räumlicher Schatten, der das Glas von der Homepage abhebt */
     box-shadow: 0 10px 30px rgba(11, 60, 55, 0.06), 
                 0 1px 3px rgba(0, 0, 0, 0.02);
                 
@@ -53,7 +49,6 @@ body {
 }
 
 .nav-container {
-    /* max-width wird jetzt von .main-nav abgefangen, hier sorgt width: 100% für sauberes Padding */
     width: 100%;
     padding: 0.8rem 1.5rem;
     display: flex;
@@ -61,23 +56,37 @@ body {
     align-items: center;
 }
 
-.nav-brand {
+/* Logo Fix: Kein Blau, kein Unterstrich */
+.nav-logo, .nav-brand {
     font-weight: 800;
     color: #0b3c37;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Base Nav Links (Desktop) */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .nav-links a {
     color: #334155;
     text-decoration: none;
-    margin-left: 1.8rem;
     font-size: 0.95rem;
     font-weight: 500;
+    white-space: nowrap;
     transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-    color: #93c5fd;
+    color: #0b3c37;
+    text-decoration: underline;
 }
 
 .nav-links a.nav-cta {
@@ -85,9 +94,49 @@ body {
     color: white;
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
+    text-decoration: none;
 }
 
-/* Holt das SVG komplett aus dem Textfluss */
+/* --- Hamburger Button (Desktop ausgeblendet) --- */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger, .hamburger::before, .hamburger::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #0b3c37;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.hamburger::before, .hamburger::after {
+    content: '';
+    position: absolute;
+}
+
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
+
+.nav-toggle.active .hamburger {
+    background-color: transparent;
+}
+.nav-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+.nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* --- Hero Section --- */
 .hero-poly-bg {
     position: absolute;
     top: 0;
@@ -99,11 +148,11 @@ body {
     display: block;
 }
 
-/* Zwingt den Content-Container, über dem SVG zu liegen */
 .hero-section .container.hero-grid {
     position: relative;
     z-index: 2;
 }
+
 .hero-section {
     background-color: #0b3c37; 
     color: #ffffff;
@@ -146,20 +195,12 @@ body {
     border-radius: 4px;
 }
 
-/* Foto-Box und Slide-In Animation */
-.hero-image-placeholder {
+.hero-image-placeholder, .photo-box {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     height: 100%;
     margin-bottom: 0; 
-    padding-bottom: 0;
-}
-
-.photo-box {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 0;
     padding-bottom: 0;
 }
 
@@ -169,9 +210,7 @@ body {
     height: auto;
     display: block;
     margin-bottom: 0;
-    
     filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.15));
-    
     transform: translateX(120px);
     opacity: 0;
     animation: slideInFromRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -183,35 +222,6 @@ body {
 }
 
 /* --- Alternating Sections --- */
-.card-image-wrapper {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-}
-
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.card-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-}
-
-.card-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-}
-
-.card-content p {
-    font-size: 0.95rem;
-    color: #cbd5e1;
-    line-height: 1.5;
-}
 .profile-section-img {
     width: 100%;
     max-width: 550px;
@@ -237,7 +247,6 @@ body {
     width: 100%;
 }
 
-/* Die dynamische Linie, die oben und unten sanft verschwindet */
 .grid-image::before {
     content: "";
     position: absolute;
@@ -255,6 +264,7 @@ body {
     border-radius: 3px; 
     z-index: 2;
 }
+
 .alternating-section {
     padding: 5rem 0;
 }
@@ -280,26 +290,7 @@ body {
     margin-bottom: 1.2rem;
 }
 
-.visual-placeholder {
-    height: 240px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.visual-placeholder.datacenter { 
-    background-color: #0b3c37;
-    border-left: 6px solid #a3e635; 
-}
-.visual-placeholder.craft { 
-    background-color: #0b3c37;
-    border-left: 6px solid #a3e635;
-}
-
-/* --- Akkordeon-Bereich (Exakt wie im Bild) --- */
+/* --- Akkordeon-Bereich --- */
 .accordion-section {
     padding: 5rem 0;
 }
@@ -328,9 +319,9 @@ body {
     align-items: center;
     user-select: none;
     background: #ffffff;
+    list-style: none;
 }
 
-/* Linkes Icon-Quadrat */
 .accordion-header .icon {
     font-size: 1.3rem;
     background: #0b3c37;
@@ -348,7 +339,7 @@ body {
     flex: 1;
     padding-left: 1.5rem;
 }
-/* Das graue Pfeil-Feld rechts im Standardzustand */
+
 .accordion-header .arrow {
     background: #a3bfb5;
     color: white;
@@ -357,33 +348,21 @@ body {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    
-    /* Standardmäßig nach links zeigen lassen */
     transform: rotate(-90deg); 
 }
 
-/* Hover-Effekt auf der Kachel: Feld wird dunkler, Pfeil dreht sich nach unten */
 .accordion-header:hover .arrow {
     background-color: #5f7572;
     transform: rotate(0deg);
 }
 
-/* Wenn das Akkordeon geöffnet ist (HTML5 open Attribut), bleibt der Pfeil unten */
 .accordion-item[open] .accordion-header .arrow {
     transform: rotate(0deg);
     background-color: #5f7572;
 }
 
-/* Entfernt den standardmäßigen kleinen Browser-Pfeil im Firefox/Chrome */
 .accordion-header::-webkit-details-marker {
     display: none;
-}
-.accordion-header {
-    list-style: none;
-}
-
-.accordion-item[open] .accordion-header::after {
-    transform: rotate(180deg);
 }
 
 .accordion-content {
@@ -393,6 +372,7 @@ body {
     color: #334155;
 }
 
+/* --- Flipbook Section --- */
 .flipbook-section {
     background-color: #0b3c37;
     padding: 5rem 0;
@@ -424,8 +404,20 @@ body {
 
 .flipbook-actions {
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
-/* StPageFlip Pflicht-Styles, fehlen im CDN-JS-Bundle */
+
+button.btn-secondary {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* StPageFlip Pflicht-Styles */
 .stf__parent {
     position: relative;
     display: block;
@@ -464,6 +456,7 @@ body {
     left: 0;
     top: 0;
 }
+
 /* --- Footer --- */
 .main-footer {
     background-color: #0b3c37;
@@ -492,20 +485,7 @@ body {
     border-bottom: 2px solid rgba(255,255,255,0.1);
     padding-bottom: 0.6rem;
 }
-.flipbook-actions {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
 
-button.btn-secondary {
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1rem;
-}
 .footer-info p { color: #cbd5e1; }
 .footer-name { font-size: 1.3rem; font-weight: 700; color: #ffffff !important; }
 
@@ -543,12 +523,70 @@ button.btn-secondary {
     cursor: pointer;
 }
 
-/* --- Responsive Anpassungen --- */
+/* --- Responsive Anpassungen (Mobilgeräte) --- */
 @media (max-width: 768px) {
-    .hero-grid, .alternate-grid, .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .alternating-section.reverse .alternate-grid { direction: ltr; }
-    .hero-section { text-align: center; }
-    .nav-links { display: none; }
+    /* Layout Anpassen */
+    .hero-grid, .alternate-grid, .footer-grid { 
+        grid-template-columns: 1fr; 
+        gap: 3rem; 
+    }
+    
+    .alternating-section.reverse .alternate-grid { 
+        direction: ltr; 
+    }
+    
+    .hero-section { 
+        text-align: center; 
+    }
+
+    /* SVG Polygone auf Handy kompakt halten */
+    .hero-poly-bg {
+        object-fit: cover;
+        height: 100%;
+    }
+
+    /* Mobile Hamburger Einblenden */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Mobile Glassmorphism Dropdown */
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+        
+        background: rgba(7, 39, 36, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        color: #ffffff;
+        display: block;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    /* Hero Bild Animation auf Handy */
     .profile-img-animated {
         width: 200px;
         transform: translateY(40px);

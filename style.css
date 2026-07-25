@@ -285,7 +285,7 @@ body {
 }
 
 .grid-text h2 {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     color: #0b3c37;
     margin-bottom: 1.2rem;
 }
@@ -615,4 +615,25 @@ button.btn-secondary {
 @keyframes slideInFromBottom {
     0% { transform: translateY(40px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
+}
+/* Accessibility: Versteckte Überschriften für Screenreader */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Accessibility: Tastatur-Fokus deutlich sichtbar machen */
+a:focus-visible, 
+button:focus-visible, 
+input:focus-visible, 
+textarea:focus-visible {
+    outline: 3px solid #a3e635 !important;
+    outline-offset: 3px;
 }

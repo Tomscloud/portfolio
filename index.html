@@ -392,10 +392,10 @@ if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('active');
         navToggle.classList.toggle('active');
-        navToggle.setAttribute('aria-expanded', isOpen);
+        // Schaltet sauber zwischen "true" und "false" um:
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Menü schließen, wenn ein Link geklickt wird
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -405,6 +405,137 @@ if (navToggle && navLinks) {
     });
 }
     </script>
+    <!-- 1. Three.js Library laden -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- 2. Styling für den Canvas-Overlay -->
+<style>
+  #mouse-mesh-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Macht den Canvas klickdurchlässig! */
+    z-index: 9999; /* Schwebende Ebene über allen Elementen */
+  }
+</style>
+
+<!-- 3. Das Canvas-Element -->
+<canvas id="mouse-mesh-canvas"></canvas>
+
+<!-- 4. Das Logik-Skript -->
+<script>
+(function() {
+  const canvas = document.getElementById('mouse-mesh-canvas');
+  const scene = new THREE.Scene();
+  
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 8;
+
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // --- 3D POLYGON GEOMETRIE ERSTELLEN ---
+  // Icosahedron (20-Flächner) dient als Basis für das Drahtgitter
+  const baseGeometry = new THREE.TetrahedronGeometry(0.7, 1);
+  const positionAttribute = baseGeometry.attributes.position;
+  
+  // Speichern der Ursprungspositionen für das kontinuierliche Morphen
+  const originalPositions = [];
+  for (let i = 0; i < positionAttribute.count; i++) {
+    originalPositions.push(new THREE.Vector3().fromBufferAttribute(positionAttribute, i));
+  }
+
+  // Material 1: Feine graue/transparente Linien
+  const lineMaterial = new THREE.MeshBasicMaterial({
+    color: 0xcccccc,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.25
+  });
+
+  // Material 2: Punkte an den Knoten
+  const pointMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.05,
+    transparent: true,
+    opacity: 0.6
+  });
+
+  const mesh = new THREE.Mesh(baseGeometry, lineMaterial);
+  const points = new THREE.Points(baseGeometry, pointMaterial);
+  
+  const group = new THREE.Group();
+  group.add(mesh);
+  group.add(points);
+  scene.add(group);
+
+  // --- MAUS-TRACKING (Mauszeiger als Zentrum) ---
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    // Umrechnen der Mauskoordinaten in 3D-Web-GL Koordinaten
+    targetX = (e.clientX / window.innerWidth) * 2 - 1;
+    targetY = -(e.clientY / window.innerHeight) * 2 + 1;
+    
+    // Position im 3D-Raum
+    const vector = new THREE.Vector3(targetX, targetY, 0.5);
+    vector.unproject(camera);
+    const dir = vector.sub(camera.position).normalize();
+    const distance = -camera.position.z / dir.z;
+    const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+    
+    targetX = pos.x;
+    targetY = pos.y;
+  });
+
+  // Window Resize Handling
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // --- ANIMATION & MORPHING LOOP ---
+  let clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const time = clock.getElapsedTime() * 1.5; // Geschwindigkeit des Morphens
+
+    // Sanfte Follow-Bewegung zur Maus (Lerp/Trägheit)
+    currentX += (targetX - currentX) * 0.3;
+    currentY += (targetY - currentY) * 0.3;
+    group.position.set(currentX, currentY, 0);
+
+    // Langsame Eigendrehung der Wolke
+    group.rotation.x += 0.005;
+    group.rotation.y += 0.008;
+
+    // --- MORPHING-EFFEKT (Eckpunkte sanft verformen) ---
+    for (let i = 0; i < positionAttribute.count; i++) {
+      const orig = originalPositions[i];
+      
+      // Mathematische Sinus/Kosinus-Welle für langsames Verbiegen der Knoten
+      const distortion = Math.sin(time + orig.x * 2.0 + orig.y * 1.5) * 0.15;
+      
+      const newX = orig.x + orig.x * distortion;
+      const newY = orig.y + orig.y * distortion;
+      const newZ = orig.z + orig.z * distortion;
+
+      positionAttribute.setXYZ(i, newX, newY, newZ);
+    }
+    
+    positionAttribute.needsUpdate = true; // Updates an GPU senden
+    renderer.render(scene, camera);
+  }
+
+  animate();
+})();
+</script>
 </body>
 
 </html>

@@ -256,7 +256,7 @@
                     <div id="flipbook-viewer"></div>
                 </div>
                 <div class="flipbook-actions">
-                    <a class="btn-secondary" href="assets/flipbook/bewerbungsmappe-stillebacher.pdf" target="_new"
+                    <a class="btn-secondary" href="assets/flipbook/bewerbungsmappe-stillebacher.pdf?v=2" target="_new"
                         download>PDF herunterladen</a>
                     <button type="button" class="btn-secondary" id="print-mappe-btn">Drucken</button>
                 </div>
@@ -333,6 +333,7 @@
     <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const flipbookVersion = 'v2';
             const pageFlip = new St.PageFlip(document.getElementById('flipbook-viewer'), {
                 width: 1600,
                 height: 2262,
@@ -349,12 +350,12 @@
             });
 
             pageFlip.loadFromImages([
-                'assets/flipbook/seite-1.jpg',
-                'assets/flipbook/seite-2.jpg',
-                'assets/flipbook/seite-3.jpg',
-                'assets/flipbook/seite-4.jpg',
-                'assets/flipbook/seite-5.jpg',
-                'assets/flipbook/seite-6.jpg'
+                'assets/flipbook/seite-1.jpg?' + flipbookVersion,
+                'assets/flipbook/seite-2.jpg?' + flipbookVersion,
+                'assets/flipbook/seite-3.jpg?' + flipbookVersion,
+                'assets/flipbook/seite-4.jpg?' + flipbookVersion,
+                'assets/flipbook/seite-5.jpg?' + flipbookVersion,
+                'assets/flipbook/seite-6.jpg?' + flipbookVersion
             ]);
 
             function updateFlipbookScale() {
@@ -387,7 +388,7 @@
                 frame.contentWindow.focus();
                 frame.contentWindow.print();
             };
-            frame.src = 'assets/flipbook/bewerbungsmappe-stillebacher.pdf';
+            frame.src = 'assets/flipbook/bewerbungsmappe-stillebacher.pdf?v=2';
         });
 
         const navToggle = document.getElementById('navToggle');
